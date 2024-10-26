@@ -1,0 +1,99 @@
+
+{% extends 'admin/admin_home.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+        }
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        .search-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .search-row input[type="text"] {
+            width: calc(100% - 120px);
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Feedback Information Table</h1>
+    </div>
+    <form action="/feedback_list_view_search" method="post">{% csrf_token %}
+
+    <div class="search-row">
+        <input type="text" name="name" class="form-control" placeholder="Enter Agency">
+        <input type="submit" name="" class="btn btn-info" value="Search">
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Agency</th>
+                <th>Feedback</th>
+                <th>Rating</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.USER.name }}</td>
+                <td>{{ feedback.AGENCY.name }}</td>
+                <td>{{ feedback.feedback }}</td>
+                <td>{{ feedback.rating }}</td>
+                <td>{{ feedback.date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No feedback data available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </form>
+
+</body>
+</html>
+
+{% endblock %}

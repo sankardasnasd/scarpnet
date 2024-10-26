@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Parts Vehicle Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('/static/bg.jpg'); /* Add a suitable background image */
+            background-size: cover;
+            background-position: center;
+        }
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+            width: 350px;
+        }
+        .login-container h1 {
+            text-align: center;
+            color: #ffc107; /* A yellow or rust-like color */
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .login-container label {
+            color: #fff;
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ffc107;
+            border: none;
+            color: black;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-container button:hover {
+            background-color: #e0a800;
+        }
+        .login-container p {
+            text-align: center;
+            color: #fff;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .login-container p a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+        .login-container p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h1>Vehicle Scrap Parts Login</h1>
+        <form method="post" action="/login_post">{% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account?&nbsp; <a href="/agency_reg">Agency</a> &nbsp;&nbsp; <a href="/user_reg">User </a></p>
+{#        <p>Don't have an account User? <a href="/user_reg">Sign Up</a></p>#}
+    </div>
+
+</body>
+</html>

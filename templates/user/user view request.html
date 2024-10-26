@@ -1,0 +1,91 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Information</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+{#            padding: 20px;#}
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+        }
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+    <table>
+        <thead>
+
+            <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Product Amount</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in data %}
+            <tr>
+                <td>{{ feedback.date }}</td>
+                <td>{{ feedback.SCRAP.CATEGORY.name }}</td>
+                <td>{{ feedback.SCRAP.name }}</td>
+
+                <td>{{ feedback.qty }}</td>
+                                <td>{{ feedback.SCRAP.price }}</td>
+
+                <td>{{ feedback.amount }}</td>
+                <td>{{ feedback.status }}</td>
+
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No  data available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<br>
+<br>
+
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,127 @@
+{##}
+{#{% extends 'user/userindex.html' %}#}
+{#{% block body %}#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Profile View</title>#}
+{#    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <style>#}
+{#        body {#}
+{#            background-color: #f4f4f4;#}
+{#        }#}
+{#        .profile-container {#}
+{#            max-width: 600px;#}
+{#            margin: 50px auto;#}
+{#            padding: 30px;#}
+{#            background: white;#}
+{#            border-radius: 10px;#}
+{#            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{##}
+{#    <div class="profile-container">#}
+{#        <h2 class="text-center">Profile Details</h2>#}
+{#        <hr>#}
+{#        <p><strong>Name:</strong> {{ profile.name }}</p>#}
+{#        <p><strong>Place:</strong> {{ profile.place }}</p>#}
+{#        <p><strong>Email:</strong> {{ profile.email }}</p>#}
+{#        <p><strong>Phone:</strong> {{ profile.phone }}</p>#}
+{#        <p><strong>Post:</strong> {{ profile.post }}</p>#}
+{#        <p><strong>Status:</strong> {{ profile.status }}</p>#}
+{#        <a href="/edit_profile" class="btn btn-primary">Edit Profile</a>#}
+{#    </div>#}
+{##}
+{#</body>#}
+{#</html>#}
+{#{% endblock %}#}
+
+
+
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile View</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef; /* Light background */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+            font-size: 26px;
+            color: #333;
+        }
+
+        .profile-container p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .profile-container p strong {
+            color: #333;
+        }
+
+        .profile-container .btn {
+            margin-top: 20px;
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .profile-container .btn:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="profile-container">
+            <h2>Profile Details</h2>
+            <hr>
+            <p><strong>Name:</strong> {{ profile.name }}</p>
+            <p><strong>Place:</strong> {{ profile.place }}</p>
+            <p><strong>Email:</strong> {{ profile.email }}</p>
+            <p><strong>Phone:</strong> {{ profile.phone }}</p>
+            <p><strong>Post:</strong> {{ profile.post }}</p>
+            <a href="/user_edit_profile" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
+{% endblock %}

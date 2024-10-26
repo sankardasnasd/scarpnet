@@ -1,0 +1,71 @@
+
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .star-rating {
+            direction: rtl;
+            display: flex;
+            justify-content: center;
+        }
+        .star-rating input {
+            display: none; /* Hide the radio buttons */
+        }
+        .star-rating label {
+            font-size: 30px; /* Size of stars */
+            color: #ddd; /* Unselected color */
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star-rating input:checked ~ label,
+        .star-rating input:hover ~ label {
+            color: #f39c12; /* Selected color */
+        }
+        .star-rating input:hover {
+            color: #f39c12; /* Change color on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Feedback Form</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <input type="text" id="feedback" name="review" class="form-control" maxlength="100" required>
+            <input type="hidden" id="id" name="id" class="form-control" maxlength="100" required value="{{ data.id }}">
+        </div>
+
+        <div class="form-group">
+            <label>Rating:</label>
+            <div class="star-rating">
+                <input type="radio" required id="star1" name="rating" value="5">
+                <label for="star1">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="4">
+                <label for="star2">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="2">
+                <label for="star4">&#9733;</label>
+                <input type="radio" id="star5" name="rating" value="1">
+                <label for="star5">&#9733;</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" name="submit">Submit Feedback</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+        }
+        .card {
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .card-content {
+            padding: 10px 0;
+        }
+        .card-content p {
+            margin: 5px 0;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            {% for user in users %}
+            <div class="col-md-3"> <!-- 4 columns per row (12/3 = 4) -->
+                <div class="card">
+                    <div class="card-header">Agency Name: {{ user.AGENCY.name }}</div>
+                    <div class="card-content">
+                        <p><strong>Category:</strong> {{ user.CATEGORY.name }}</p>
+                        <p><strong>Name:</strong> {{ user.name }}</p>
+                        <p><strong>Price:</strong> {{ user.price }}</p>
+                        <p><strong>Description:</strong>
+                            {{ user.description|truncatechars:50 }} <!-- Show only 50 characters -->
+{#                            {% if user.description|length > 50 %}#}
+                                ... <a href="/user_view_more/{{ user.id }}#a">More</a>
+{#                            {% endif %}#}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No data available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock %}

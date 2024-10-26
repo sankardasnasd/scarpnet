@@ -1,0 +1,115 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Information</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .scrap-row {
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .scrap-row:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .scrap-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            font-size: 22px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .scrap-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .scrap-content p {
+            margin: 10px 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .scrap-description {
+            margin: 10px 0;
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            word-wrap: break-word; /* Break long words */
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            font-size: 14px;
+        }
+
+        .btn-request {
+            margin-top: 20px;
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+            padding: 12px 0;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .btn-request:hover {
+            background-color: #218838;
+        }
+
+        .highlight {
+            background-color: #e7f3fe;
+            border-left: 6px solid #007bff;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 class="mb-4 text-center">Detailed Scrap Information</h2>
+
+    <div class="scrap-row">
+        <div class="scrap-header">Agency Name: {{ user.AGENCY.name }}</div>
+        <div class="scrap-content">
+            <p><strong>Category:</strong> {{ user.CATEGORY.name }}</p>
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Price:</strong> ₹{{ user.price }}</p>
+{#            <p><strong>Weight:</strong> {{ user.weight }} kg</p>#}
+            <div class="scrap-description">
+                <strong>Description:</strong><br> {{ user.description }}
+            </div>
+
+        </div>
+        <a href="/user_send_request/{{ user.id }}#a" class="btn btn-request">Request Pickup</a>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}
